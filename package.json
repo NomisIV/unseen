@@ -1,0 +1,21 @@
+{
+  "name": "unseen",
+  "version": "0.1.0",
+  "description": "A really cool game you definetly should play",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "cool",
+    "game"
+  ],
+  "author": "NomisIV, King (Crime)",
+  "license": "ISC",
+  "dependencies": {
+    "@types/p5": "^0.9.0",
+    "electron": "^7.0.1",
+    "eslint-config-p5js": "^1.0.1",
+    "eslint-config-qbproductions": "^0.3.0"
+  }
+}
