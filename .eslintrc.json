@@ -3,5 +3,9 @@
         "qbproductions",
         "p5js",
         "p5js/sound"
-    ]
+    ],
+    "globals": {
+        "Player": "readonly",
+        "Thing": "readonly"
+    }
 }

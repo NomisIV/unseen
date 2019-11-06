@@ -33,7 +33,7 @@ function draw() {
     // Draw balance
     translate(p.x, p.y);
     rotate(p.a);
-    stroke(255,0,0);
+    stroke(255, 0, 0);
     line(0, 0, cos(p.a - a) * 20, 0);
     rotate(-p.a);
     translate(-p.x, -p.y);

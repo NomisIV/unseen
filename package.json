@@ -11,11 +11,11 @@
     "game"
   ],
   "author": "NomisIV, King (Crime)",
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "dependencies": {
     "@types/p5": "^0.9.0",
     "electron": "^7.0.1",
     "eslint-config-p5js": "^1.0.1",
-    "eslint-config-qbproductions": "^0.3.0"
+    "eslint-config-qbproductions": "^0.5.0"
   }
 }
