@@ -2,6 +2,7 @@
   "name": "unseen",
   "version": "0.1.0",
   "description": "A really cool game you definetly should play",
+  "repository": "https://github.com/NomisIV/unseen.git",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
