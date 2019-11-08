@@ -7,8 +7,14 @@
         "p5js",
         "p5js/sound"
     ],
+    "rules": {
+        "no-redeclare": "off"
+    },
     "globals": {
         "Player": "readonly",
-        "Thing": "readonly"
+        "Thing": "readonly",
+        "p": "readonly",
+        "debug": "readonly",
+        "p5": "readonly"
     }
 }
