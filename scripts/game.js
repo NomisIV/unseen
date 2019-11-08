@@ -25,7 +25,7 @@ function draw() {
     o.draw();
 
     const d = sqrt(pow(p.x - o.x, 2) + pow(p.y - o.y, 2));
-    const a = Math.atan((p.y - o.y) / (p.x - o.x));
+    const a = Math.atan2( (p.y - o.y), (p.x - o.x) ) - PI;
 
     // Line from player position to the object, using d and a
     line(p.x, p.y, cos(a) * d + p.x, sin(a) * d + p.y);
@@ -39,7 +39,7 @@ function draw() {
     translate(-p.x, -p.y);
     stroke(255);
 
-    o.play(10 / d, -cos(p.a - a));
+    o.play(10 / d, cos(a - p.a));
 
     if (frameCount % 30 == 0 && !keys[" "]) {
         o.s.start();
