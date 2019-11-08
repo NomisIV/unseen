@@ -1,16 +1,26 @@
-const keys = {};
-let p;
-let o;
-const step = 3;
+/* ======== CONSTANTS ======== */
+const debug = true;
+const step = 3; // Visual movement speed
 
+/* ======== GAME OBJECTS ======== */
+const keys = {};
+const sounds = [];
+const p = new Player(50, 50, 0);
+
+/* ======== RUNTIME VARIABLES ======== */
+let mute = false;
+
+/* ======== SETUP ======== */
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    p = new Player(50, 50, 0);
-    o = new Thing(500, 500);
+    createCanvas(windowWidth, windowHeight); // Create a canvas the size of the window
     stroke(255);
+    rectMode(CENTER);
+
+    // Add sound at [500, 500]
+    sounds.push(new Thing(500, 500));
 }
 
-
+/* ======== GAME LOOP ======== */
 function draw() {
     background(0);
 
@@ -19,34 +29,25 @@ function draw() {
     if (keys.s) p.move(-Math.cos(p.a) * step, Math.sin(p.a) * step, 0);
     if (keys.a) p.a -= PI / 64;
     if (keys.d) p.a += PI / 64;
-    if (keys[" "]) o.s.stop();
 
+    // Draw objects
     p.draw();
-    o.draw();
 
-    const d = sqrt(pow(p.x - o.x, 2) + pow(p.y - o.y, 2));
-    const a = Math.atan2( (p.y - o.y), (p.x - o.x) ) - PI;
-
-    // Line from player position to the object, using d and a
-    line(p.x, p.y, cos(a) * d + p.x, sin(a) * d + p.y);
-
-    // Draw balance
-    translate(p.x, p.y);
-    rotate(p.a);
-    stroke(255, 0, 0);
-    line(0, 0, cos(p.a - a) * 20, 0);
-    rotate(-p.a);
-    translate(-p.x, -p.y);
-    stroke(255);
-
-    o.play(10 / d, cos(a - p.a));
-
-    if (frameCount % 30 == 0 && !keys[" "]) {
-        o.s.start();
-    } else if (frameCount % 30 == 15) {
-        o.s.stop();
-    }
+    // Play sounds
+    sounds.forEach(s => {
+        s.draw();
+        s.play();
+    });
 }
 
-function keyPressed() { keys[key] = true; }
+/* ======== KEYBOARD INPUT ======== */
+function keyPressed() {
+    if (key == " ") {  // Toggle sound with space
+        if (mute) sounds.forEach(s => s.s.stop());
+        else sounds.forEach(s => s.s.start());
+        mute = !mute;
+    }
+    else keys[key] = true; // else pass on to keys
+}
+
 function keyReleased() { keys[key] = false; }

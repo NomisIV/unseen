@@ -1,7 +1,10 @@
 class Player {
     constructor(x, y, a) {
+        // Coordinates
         this.x = x;
         this.y = y;
+
+        // Angle
         this.a = a;
     }
 
@@ -18,7 +21,6 @@ class Player {
     draw() {
         translate(this.x, this.y);
         rotate(this.a);
-        rectMode(CENTER);
         rect(0, 0, 20, 20);
         line(0, 0, 0, 20); // front
         rotate(-this.a);
