@@ -34,7 +34,7 @@ class Thing {
     play() {
         // Update angle and distance
         this.d = sqrt(pow(p.x - this.x, 2) + pow(p.y - this.y, 2));
-        this.a = Math.atan2((p.y - this.y), (p.x - this.x)) - PI;
+        this.a = Math.atan2(p.y - this.y, p.x - this.x) - PI;
 
         // Calculate volume and panning from angle and distance
         const vol = 10 / this.d;

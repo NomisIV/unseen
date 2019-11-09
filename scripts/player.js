@@ -15,7 +15,7 @@ class Player {
     }
 
     atPos(x, y) {
-        return (this.x == x && this.y == y);
+        return this.x == x && this.y == y;
     }
 
     draw() {
@@ -27,7 +27,5 @@ class Player {
         translate(-this.x, -this.y);
     }
 
-    die() {
-
-    }
+    die() {}
 }

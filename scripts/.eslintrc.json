@@ -2,11 +2,7 @@
     "env": {
         "node": false
     },
-    "extends": [
-        "qbproductions",
-        "p5js",
-        "p5js/sound"
-    ],
+    "extends": ["qbproductions", "p5js", "p5js/sound"],
     "rules": {
         "no-redeclare": "off"
     },

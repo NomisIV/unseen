@@ -42,12 +42,16 @@ function draw() {
 
 /* ======== KEYBOARD INPUT ======== */
 function keyPressed() {
-    if (key == " ") {  // Toggle sound with space
+    // Toggle sound with space
+    if (key == " ") {
         if (mute) sounds.forEach(s => s.s.stop());
         else sounds.forEach(s => s.s.start());
         mute = !mute;
     }
-    else keys[key] = true; // else pass on to keys
+    // else pass on to keys
+    else keys[key] = true;
 }
 
-function keyReleased() { keys[key] = false; }
+function keyReleased() {
+    keys[key] = false;
+}
