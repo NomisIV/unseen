@@ -7,6 +7,13 @@ const keys = {};
 const sounds = [];
 const p = new Player(50, 50, 0);
 
+/* ======== GLOBAL FUNCTIONS ======== */
+function restrictAngle(a) {
+    if (a < -PI) a += 2 * PI;
+    if (a > PI) a -= 2 * PI;
+    return a;
+}
+
 /* ======== RUNTIME VARIABLES ======== */
 let mute = false;
 
@@ -25,10 +32,11 @@ function draw() {
     background(0);
 
     // Movement
-    if (keys.w) p.move(-Math.sin(p.a) * step, Math.cos(p.a) * step, 0);
-    if (keys.s) p.move(Math.sin(p.a) * step, -Math.cos(p.a) * step, 0);
+    if (keys.w) p.move(Math.sin(p.a) * step, Math.cos(p.a) * step, 0);
+    if (keys.s) p.move(-Math.sin(p.a) * step, -Math.cos(p.a) * step, 0);
     if (keys.a) p.a -= PI / 64;
     if (keys.d) p.a += PI / 64;
+    p.a = restrictAngle(p.a);
     // p.a = ((p.a + PI) % 2) - PI;
 
     // Draw objects
@@ -56,3 +64,5 @@ function keyPressed() {
 function keyReleased() {
     keys[key] = false;
 }
+
+/* ======== GLOBAL FUNCTIONS ======== */
