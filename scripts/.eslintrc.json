@@ -4,7 +4,10 @@
     },
     "extends": ["qbproductions", "p5js", "p5js/sound", "p5js/dom"],
     "rules": {
-        "no-redeclare": "off"
+        "no-redeclare": "off",
+        "no-global-assign": "off",
+        "no-console": "off",
+        "prefer-const": "off"
     },
     "globals": {
         "Player": "readonly",
