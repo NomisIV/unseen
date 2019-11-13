@@ -48,7 +48,7 @@ class Thing {
             this.a < PI / 2 && this.a > -PI / 2 ? 1 : -cos(this.a) / 4 + 0.75;
         console.log(this.a, rotationFactor);
         const vol = (10 / this.d) * rotationFactor;
-        const pan = -cos(this.a);
+        const pan = sin(this.a);
 
         // Set volume and panning
         this.s.amp(vol, 1 / 60);
