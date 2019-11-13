@@ -12,6 +12,6 @@ First working prototype. Players can move around the map and objects can be adde
 ADDED:
 
 -   Added frequency and beep frequency for sound objects
--   (Added realtime wave-tracingâ„¢)
+-   (Added real-time wave-tracing©)
 -   {Decreased volume behind player for easier navigation}
 -   {Players can no longer walk outside of the map}
