@@ -56,3 +56,8 @@ function keyPressed() {
 function keyReleased() {
     keys[key] = false;
 }
+
+/* ======== WINDOW RESIZE ======== */
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
