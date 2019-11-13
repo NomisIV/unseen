@@ -25,6 +25,13 @@ function showScreen(s) {
     setup();
 }
 
+/* ======== GLOBAL FUNCTIONS ======== */
+function restrictAngle(a) {
+    if (a < -PI) a += 2 * PI;
+    if (a > PI) a -= 2 * PI;
+    return a;
+}
+
 /* ======== RUNTIME VARIABLES ======== */
 let mute = false;
 let screen = "start";
@@ -60,12 +67,13 @@ function draw() {
         break;
     case "game":
         background(0);
-        // Game loop
+
         // Movement
-        if (keys.w) p.move(-Math.sin(p.a) * step, Math.cos(p.a) * step, 0);
-        if (keys.s) p.move(Math.sin(p.a) * step, -Math.cos(p.a) * step, 0);
+        if (keys.w) p.move(Math.sin(p.a) * step, Math.cos(p.a) * step, 0);
+        if (keys.s) p.move(-Math.sin(p.a) * step, -Math.cos(p.a) * step, 0);
         if (keys.a) p.a -= PI / 64;
         if (keys.d) p.a += PI / 64;
+        p.a = restrictAngle(p.a);
         // p.a = ((p.a + PI) % 2) - PI;
 
         // Draw objects
@@ -78,7 +86,6 @@ function draw() {
         });
         break;
     }
-    // background(0);
 }
 
 /* ======== KEYBOARD INPUT ======== */
