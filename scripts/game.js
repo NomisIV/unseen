@@ -69,10 +69,12 @@ function draw() {
             background(0);
 
             // Movement
-            if (keys.w) p.move(Math.sin(p.a) * step, Math.cos(p.a) * step, 0);
-            if (keys.s) p.move(-Math.sin(p.a) * step, -Math.cos(p.a) * step, 0);
-            if (keys.a) p.a -= PI / 64;
-            if (keys.d) p.a += PI / 64;
+            if (keys.w || keys.ArrowUp)
+                p.move(Math.sin(p.a) * step, Math.cos(p.a) * step, 0);
+            if (keys.s || keys.ArrowDown)
+                p.move(-Math.sin(p.a) * step, -Math.cos(p.a) * step, 0);
+            if (keys.a || keys.ArrowLeft) p.a -= PI / 64;
+            if (keys.d || keys.ArrowRight) p.a += PI / 64;
             p.a = restrictAngle(p.a);
             // p.a = ((p.a + PI) % 2) - PI;
 
@@ -93,11 +95,11 @@ function keyPressed() {
     // Toggle sound with space
     if (key == " ") {
         if (mute) sounds.forEach(s => s.s.stop());
-        else sounds.forEach(s => s.s.start());
         mute = !mute;
     }
     // else pass on to keys
     else keys[key] = true;
+    console.log(key);
 }
 
 function keyReleased() {
