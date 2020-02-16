@@ -55,7 +55,9 @@ class Thing {
         this.s.pan(pan);
 
         // Beep
-        if (this.playing && !this.hasPlayed) this.s.start();
+        // Start sound if it should play, but haven't yet started and isnt muted
+        if (this.playing && !this.hasPlayed && !mute) this.s.start();
+        // stop sound if it should not play, but haven't yet stopped
         else if (!this.playing && this.hasPlayed) this.s.stop();
         this.hasPlayed = this.playing;
     }
