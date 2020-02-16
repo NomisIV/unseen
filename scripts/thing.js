@@ -29,7 +29,7 @@ class Thing {
             translate(p.x, height - p.y);
             rotate(p.a);
             stroke(255, 0, 0);
-            line(0, 0, sin(this.a) * 20, 0);
+            line(0, 0, -sin(this.a) * 20, 0);
             rotate(-p.a);
             translate(-p.x, p.y - height);
             stroke(255);
@@ -39,13 +39,15 @@ class Thing {
     play() {
         // Update angle and distance
         this.d = sqrt(pow(p.x - this.x, 2) + pow(p.y - this.y, 2));
-        this.a = p.a + (Math.atan2(p.y - this.y, p.x - this.x) - PI / 2);
+        this.a = p.a + (Math.atan2(this.y - p.y, this.x - p.x) - PI / 2);
         this.a = restrictAngle(this.a);
 
         // Calculate volume and panning from angle and distance
         // Decrease volume behind the player using rotationFactor
         const rotationFactor =
-            this.a < PI / 2 && this.a > -PI / 2 ? 1 : -cos(this.a) / 4 + 0.75;
+            this.a < PI / 2 && this.a > -PI / 2
+                ? 1
+                : -cos(2 * this.a) / 4 + 0.75;
         console.log(this.a, rotationFactor);
         const vol = (10 / this.d) * rotationFactor;
         const pan = sin(this.a);
